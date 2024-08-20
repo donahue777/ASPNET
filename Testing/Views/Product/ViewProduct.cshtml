@@ -1,0 +1,25 @@
+﻿@* This line specifies that the view expects a model of type Product to be passed to it. *@
+@model Product
+@*A heading that displays the name of the product followed by the word Information.*@
+<h3>@Model.Name Information</h3>
+
+<table class="table">
+    @*This table row contains the table headers for each column corresponding to the properties of the Product class model.*@
+    <tr>
+        <th>Product ID</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Category ID</th>
+        <th>On Sale</th>
+        <th>StockLevel</th>
+    </tr>
+    @*This table row contains the table data / value to each property within the product model.*@
+    <tr>
+        <td>@Model.ProductID</td>
+        <td>@Model.Name</td>
+        <td>@Model.Price</td>
+        <td>@Model.CategoryID</td>
+        <td>@Model.OnSale</td>
+        <td>@Model.StockLevel</td>
+    </tr>
+</table>

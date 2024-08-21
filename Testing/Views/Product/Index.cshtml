@@ -1,6 +1,9 @@
-﻿@model IEnumerable<Product>
+﻿@*This line means it will be working with a collection of Product objects.
+   This collection is provided by the controller.*@
+@model IEnumerable<Product>
 
 <h2>Products</h2>
+@*This begins a table element with the class table, which is often styled by CSS frameworks like Bootstrap.*@
 <table class="table">
     <tr>
         <th>ID</th>
@@ -14,6 +17,12 @@
     @foreach (var product in @Model)
     {
         <tr>
+            @*A link to provide product details using the product's id. The first
+                (@product.ProductID) is used to construct the URL for the link which is done by the
+                ViewProduct method within the ProductController class. 
+                The second (>@product.ProductID<) makes the text of the product
+                id display the link for the product.
+            *@
             <td><a href=/Product/ViewProduct/@product.ProductID>@product.ProductID</a></td>
             <td>@product.Name</td>
             <td>@product.Price</td>

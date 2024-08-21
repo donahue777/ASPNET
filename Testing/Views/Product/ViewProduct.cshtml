@@ -23,3 +23,12 @@
         <td>@Model.StockLevel</td>
     </tr>
 </table>
+
+@*creates a block-level <div> element that contains a hyperlink (href / hypertext reference) using an anchor tag (<a> tag) to specify its destination.
+   The link's URL directs the user to the UpdateProduct action in the Product controller, and it appends the
+   current product's ID (represented by @Model.ProductID) to the URL. When the link is clicked, it will navigate to the page where the product
+   with the corresponding ProductID can be updated. The display: block style ensures that the <div> element is treated as a block, 
+   meaning it will occupy the full width available and start on a new line.*@
+<div style="display: block">
+    <a href="/Product/UpdateProduct/@Model.ProductID">Update this Product</a>
+</div>

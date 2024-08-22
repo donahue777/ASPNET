@@ -32,3 +32,17 @@
 <div style="display: block">
     <a href="/Product/UpdateProduct/@Model.ProductID">Update this Product</a>
 </div>
+
+<div style="display: block">
+
+    @*DeleteProduct specifies the name of the action method in the Product controller that will handle the form submission.
+    Post specifies that the form will be submitted using the HTTP POST method.
+    Product indicates that the action method belongs to the Product controller.
+    ASP.NET Core MVC follows a convention where controllers are named with the suffix Controller so there's no need to specify
+    the full name of the controller class.*@
+    @using (Html.BeginForm("DeleteProduct", "Product", "Post"))
+    {
+        <input type="hidden" asp-for="ProductID" value="@Model.ProductID" />
+        <input type="submit" onclick="return confirm('Are you sure?')" value="Delete this product" />
+    }
+</div>

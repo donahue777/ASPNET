@@ -1,16 +1,29 @@
-﻿@model Product
+﻿@*This Razor view provides a form for updating a product's name and price. It uses model binding to prepopulate the form fields with the current product data.
+When the user submits the form, the data is sent to the UpdateProductToDatabase action in the Product controller, 
+where the application can process the update based on the provided ProductID, Name, and Price.*@
+@model Product
 
 <h2>Update @Model.Name</h2>
 
+@*This line starts an HTML form. The Html.BeginForm method creates a form that submits a POST request
+to the UpdateProductToDatabase action method of the Product controller.*@
 @using (Html.BeginForm("UpdateProductToDatabase", "Product", "Post"))
 {
+    @*This line creates a hidden input field for the ProductID property of the Product model. This ensures that when the form is submitted,
+    the ProductID will be sent back to the server, allowing the action method to know which product is being updated.*@
     <input asp-for="ProductID" type="hidden" value="@Model.ProductID" />
 
+    @*This section creates a label for the Name property and an input field for the user to enter the product name.
+    The asp-for attribute on the label links it to the Name property, which enhances accessibility.
+    The input field is populated with the current name of the product using value="@Model.Name".*@
     <label asp-for="Name" class="control-label">Name</label>
     <input type="text" name="Name" class="form-control" value="@Model.Name" />
 
+    @*The step attribute allows decimal values to two decimal places. The control-label class is used to apply specific styles to label elements in forms.
+    When applied, it typically adjusts the label's font size, weight, and spacing to make it visually distinct from regular text.*@
     <label asp-for="Price" class="control-label">Price</label>
     <input type="number" step="0.01" name="Price" class="form-control" value="@Model.Price" />
 
+    @*This line creates a submit button for the form. When clicked, the form data will be sent to the specified action method to update the product.*@
     <input type="submit" value="Update Product" class="btn btn-primary" />
 }

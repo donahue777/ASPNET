@@ -7,20 +7,32 @@
     <meta charset="utf-8" />
     @*Ensures the webpage is responsive by setting the viewport to the device's width and scaling the content appropriately.*@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    @*Sets the title of the page, pulling the value from the ViewData dictionary (a way to pass data from the controller to the view) and appending " - Testing" to it.*@
     <title>@ViewData["Title"] - Testing</title>
+    @*The link element is used to define a relationship between the current document and an external resource.
+    The rel attribute of the link element specifies the nature of that relationship.
+    rel defines the relationship between the current document and the resource linked to by the href attribute.
+    This links to the Bootstrap CSS library for styling and layout.*@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    @*This links to a custom stylesheet for additional styles specific to the application.*@
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
+    @*The <header> tag contains the navigation bar, implemented using Bootstrap classes for styling.*@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
+                @*The <a class="navbar-brand" ...> is a link to the home page. It uses Razor syntax with asp-area, asp-controller,
+                    and asp-action attributes to generate the URL dynamically.*@
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Testing</a>
+                @*The button (<button class="navbar-toggler" ...>) is for toggling the navbar on smaller screens. It collapses or expands the menu when clicked.*@
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    @*An unordered list (<ul class="navbar-nav flex-grow-1">) contains navigation links for "Home" and "Products,"
+                        each linking to their respective actions in the specified controllers.*@
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
@@ -33,20 +45,30 @@
             </div>
         </nav>
     </header>
+    @*The <div class="container"> provides a responsive fixed-width container for the main content.*@
     <div class="container">
+        @*The <main> element is semantically used for the main content area of the page.
+            The @RenderBody() method call is where the content of the specific view (that uses this layout) will be rendered.*@
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
-
+    @*The <footer> tag contains footer content with a top border and muted text styling.
+    It includes copyright information and a link to the Privacy policy page, similarly using Razor attributes to generate the URL.*@
     <footer class="border-top footer text-muted">
         <div class="container">
             &copy; 2020 - Testing - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
+    @*This section includes references to JavaScript files.
+    The first script loads the jQuery library, a dependency for Bootstrap's JavaScript components.*@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    @*The second script loads Bootstrap's JavaScript bundle for interactive features (like the responsive navbar).*@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    @*The third script loads a custom JavaScript file (site.js). The asp-append-version="true" attribute 
+    appends a version query string to the file path, which helps with cache busting.*@
     <script src="~/js/site.js" asp-append-version="true"></script>
+    @*@RenderSection allows views that use this layout to define additional script references if needed, but it’s not required.*@
     @RenderSection("Scripts", required: false)
 </body>
 </html>
